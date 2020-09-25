@@ -1,0 +1,7 @@
+{
+  "name": "currency_converter",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

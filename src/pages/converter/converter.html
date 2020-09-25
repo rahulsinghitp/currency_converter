@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+     <ion-grid>
+      <ion-row>
+        <ion-col col-12 text-center>
+          <h2><b><i>Currency Converter</i></b></h2>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <form #CurrencyConverterForm="ngForm">
+    <ion-grid class="input-grid">
+      <ion-row align-items-center>
+	<ion-col col-12>
+	  <ion-item>
+	    <ion-input placeholder="enter amount" type="number" name="entered_amount" [(ngModel)]="entered_amount" required></ion-input>
+	  </ion-item>
+	</ion-col>
+      </ion-row>
+      <ion-row>
+	<ion-col col-6>
+	  <ion-item>
+	    <ion-label>From</ion-label>
+	    <ion-select class="from-currency" [(ngModel)]="from_currency" name="from_currency">
+	      <ion-option *ngFor="let currency of currencies;let i = index" [value]="currency">{{currency}}</ion-option>
+            </ion-select>
+	  </ion-item>
+        </ion-col>
+	<ion-col col-6>
+	  <ion-item>
+	    <ion-label>To</ion-label>
+	    <ion-select class="to-currency" [(ngModel)]="to_currency" name="to_currency">
+	      <ion-option *ngFor="let currency of currencies;let i = index" [value]="currency">{{currency}}</ion-option>
+            </ion-select>
+	  </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+	<ion-col col-2>
+	</ion-col>
+	<ion-col col-8>
+	  <button ion-button round color="danger" class="convert-amount" block type="submit" [disabled]="!CurrencyConverterForm.form.valid" (click)="convertAmount()">
+            <b>Convert Amount</b>
+	  </button>
+	</ion-col>
+	<ion-col col-2>
+	</ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+	<ion-col col-12 text-center>
+         <div class="converted-amount"><b><i>{{converted_amount | number}} {{to_currency}}</i></b></div>
+	</ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
